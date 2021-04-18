@@ -1,0 +1,117 @@
+using System;
+
+namespace VowelorConsonant
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("This is a program that will tell you if a letter is a " +
+                "vowel or consonant. If you enter a word or set of words, it will tell " +
+                "you the number of vowels in the word or words. Numbers will break the program.\n");
+
+            Console.WriteLine("Please enter a letter or word(s):");
+            string answer = Console.ReadLine();
+
+            //find single any numbers given by the user
+            switch (answer)
+            {
+                case "0":
+                case "1":
+                case "2":
+                case "3":
+                case "4":
+                case "5":
+                case "6":
+                case "7":
+                case "8":
+                case "9":
+                    throw new Exception("Error: This entry contains numbers!"
+                                    );
+                    
+            }
+
+            //differentiate letters from words, calls corresponding method
+            if (answer.Length == 1)
+            {
+                VowelOrConso(answer);
+            }
+
+            else if (answer.Length > 1)
+            {
+                CountVowels(answer);
+            }
+            
+        }
+
+        static void VowelOrConso(string letter)
+        {
+            //return the letter the user gave and tell if its a vowel or consonant
+            switch (letter)
+            {
+                case "A":
+                case "a":
+                case "E":
+                case "e":
+                case "I":
+                case "i":
+                case "O":
+                case "o":
+                case "U":
+                case "u":
+                    Console.WriteLine($"'{letter}' is a vowel");
+                    break;
+
+                case "Y":
+                case "y":
+                    Console.WriteLine($"'{letter}' is a consonant, that is sometimes a vowel");
+                    break;
+
+                default:
+                    Console.WriteLine($"'{letter}' is a consonant");
+                    break;
+            }
+
+        }
+
+        static void CountVowels(string word)
+        {
+
+            int count = 0; //vowel counter
+            string numbers = "1234567890";
+            string vowels = "AaEeIiOoUu";
+
+            //compares the word given by user, the vowels string and the numbers string.
+            foreach ( var i in word)
+            {
+                foreach ( var j in vowels)
+                {
+                    foreach (var n in numbers)
+                    {
+                        //+1 to the vowel counter if a letter in the word matches a vowel
+                        if (i == j)
+                        {
+                            count++; 
+                        }
+
+                        //throws exception if a character in the word matches a number
+                        else if (i == n)
+                        {
+                            throw new Exception("Error: This entry contains numbers!");
+                        }
+                    }
+                  
+                }
+            }
+            /*
+             * since there's a extra foreach loop to look for numbers in the given word,
+             * the counter get increased x10. (i.e. a word with 3 vowels would set the 
+             * the counter to 30). count divided by 10 corrects this.
+             */
+
+            //display the number of vowels in the word or words to the user
+            Console.WriteLine($"'{word}' contains {count/10} vowels");
+        }
+
+    }
+}
