@@ -1,5 +1,5 @@
 # CSharp-Practice
-Challenges and programs created in C #
+Challenges and programs created in C#
 
 
 1. *** Vowels and Consonants ***
