@@ -15,3 +15,11 @@ This is a console app derived from the "Sum OR Difference" problem on CodeChef.c
 
 Link: https://www.codechef.com/problems/DIFFSUM
 
+
+
+3. *** Total Expenses ***
+
+This is a console app derived from the "Total Expenses" problem on CodeChef.com
+
+Link: https://www.codechef.com/problems/FLOW009
+
